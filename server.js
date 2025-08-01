@@ -12,6 +12,20 @@ const path = require('path');
 // })
 // ---- The above method to send static files is too junky , instead we can use .static to decalre a folder as static and express will automatically send the files inside that folder as static files 
 
-app.use(express.static(path.join(__dirname,'public')))
+// app.use(express.static(path.join(__dirname,'public')))
+
+const posts = [{
+  id : 1,
+  name : "uzair"
+},{
+  id : 2,
+  name : 'asad'
+},{
+  id: 3,
+  name : "zubair"
+}]
+app.get('/api/posts',(req,res)=>{
+res.json(posts);
+})
 
 app.listen(8000, () => console.log("Server running on port 8000 OK")); // Listening for request on port 8000
