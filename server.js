@@ -1,5 +1,6 @@
 const express = require("express"); // Common JS
 const app = express(); // Used for all funcitons
+const posts = require('./routes/posts');
 const path = require("path");
 const PORT = process.env.PORT || 8000;
 
@@ -15,38 +16,6 @@ const PORT = process.env.PORT || 8000;
 
 // app.use(express.static(path.join(__dirname,'public')))
 
-const posts = [
-  {
-    id: 1,
-    name: "uzair",
-  },
-  {
-    id: 2,
-    name: "asad",
-  },
-  {
-    id: 3,
-    name: "zubair",
-  },
-];
-//For getting all posts
-app.get("/api/posts", (req, res) => {
-  const limit = req.query.limit;
-  if (!isNaN(limit) && limit > 0) {
-    res.json(posts.slice(0, limit));
-  }
-  res.json(posts);
-});
-//Fro gettifn a post with a specific id
-app.get("/api/posts/:id", (req, res) => {
-  //For getting the dynamic parameter from the url
-  const id = parseInt(req.params.id);
-  const post = posts.find((post) => post.id === id);
-  if (post) {
-    return res.status(200).json(post);
-  }
-  res.status(404);
-  res.json({msg:"Post with the id was not found"})
-});
 
+app.use('/api/posts',posts);
 app.listen(PORT, () => console.log(`Server running on port ${PORT} OK`)); // Listening for request on port 8000
