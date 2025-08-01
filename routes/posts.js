@@ -1,4 +1,5 @@
-const express = require('express');
+// const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 const posts = [
@@ -35,4 +36,5 @@ router.get("/:id", (req, res) => {
   res.json({msg:"Post with the id was not found"})
 });
 
-module.exports = router;
+// module.exports = router;
+export default router;
