@@ -1,6 +1,7 @@
 const express = require("express"); // Common JS
 const app = express(); // Used for all funcitons
 const path = require('path');
+const PORT = process.env.PORT || 8000;
 
 // app.get("/", (req, res) => {
 //   // to define get behaviour on root directory
@@ -24,8 +25,15 @@ const posts = [{
   id: 3,
   name : "zubair"
 }]
+//For getting all posts
 app.get('/api/posts',(req,res)=>{
 res.json(posts);
 })
+//Fro gettifn a post with a specific id 
+app.get('/api/posts/:id',(req,res)=>{
+  //For getting the dynamic parameter from the url 
+  const id = parseInt(req.params.id);
+  res.json(posts.filter((post)=>post.id===id));
+})
 
-app.listen(8000, () => console.log("Server running on port 8000 OK")); // Listening for request on port 8000
+app.listen(PORT, () => console.log(`Server running on port ${PORT} OK`)); // Listening for request on port 8000
