@@ -12,7 +12,6 @@ let __dirname = dirname(__filename);
 // ---- The above method to send static files is too junky , instead we can use .static to decalre a folder as static and express will automatically send the files inside that folder as static files
 
 app.use(express.static(join(__dirname,'public')))
-
 app.use(express.json());
 app.use(logger)
 
