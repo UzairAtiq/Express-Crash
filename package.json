@@ -1,17 +1,18 @@
 {
   "name": "express-crash",
   "version": "1.0.0",
-  "type" : "module",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start" : "node server",
-    "dev" : "node --watch --env-file=.env server"
+    "start": "node server",
+    "dev": "node --watch --env-file=.env server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "colors": "^1.4.0",
     "express": "^5.1.0"
   }
 }
